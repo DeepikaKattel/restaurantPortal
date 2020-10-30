@@ -13,7 +13,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Food Categories Form</li>
+              <li class="breadcrumb-item active">General Form</li>
             </ol>
           </div>
         </div>
@@ -33,15 +33,18 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('foodCategories.store')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('foodCategories.update',$foodCategories->id)}}" method="post" enctype="multipart/form-data">
               @csrf
+              @method('PATCH')
                 <div class="card-body">
                   <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category" value="{{old('name', $foodCategories->name)}}">
                   </div>
+
                 </div>
                 <!-- /.card-body -->
+
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

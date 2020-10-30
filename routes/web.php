@@ -21,3 +21,6 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
+
+Route::resource('/foodCategories', 'App\Http\Controllers\FoodCategoriesController');
+Route::get('/foodCategories/destroy/{id}', 'App\Http\Controllers\FoodCategoriesController@destroy')->name('f.destroy');

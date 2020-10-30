@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FoodCategories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FoodCategoriesController extends Controller
 {
@@ -14,7 +15,8 @@ class FoodCategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $foodCategories = DB::table('food_categories')->get();
+        return view('admin.foodCategories.index', compact('foodCategories'));
     }
 
     /**
@@ -24,7 +26,7 @@ class FoodCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.foodCategories.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class FoodCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $foodCategories = new FoodCategories();
+        $foodCategories->name = request('name');
+        $foodCategories->save();
+        $food = $foodCategories->save();
+        if($food) {
+            return redirect('/foodCategories')->with("status", "The record has been stored");
+        } else {
+            return redirect('/foodCategories')->with("error", "There is an error");
+        }
     }
 
     /**
@@ -55,9 +65,10 @@ class FoodCategoriesController extends Controller
      * @param  \App\Models\FoodCategories  $foodCategories
      * @return \Illuminate\Http\Response
      */
-    public function edit(FoodCategories $foodCategories)
+    public function edit($id)
     {
-        //
+        $foodCategories = FoodCategories::find($id);
+        return view('admin.foodCategories.edit', compact('foodCategories'));
     }
 
     /**
@@ -67,9 +78,17 @@ class FoodCategoriesController extends Controller
      * @param  \App\Models\FoodCategories  $foodCategories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FoodCategories $foodCategories)
+    public function update($id)
     {
-        //
+        $foodCategories = FoodCategories::find($id);
+        $foodCategories->name = request('name');
+        $foodCategories->save();
+        $food = $foodCategories->save();
+        if ($food) {
+            return redirect('/foodCategories')->with("status", "The record has been updated");
+        } else {
+            return redirect('/foodCategories')->with("error", "There is an error");
+        }
     }
 
     /**
@@ -78,8 +97,9 @@ class FoodCategoriesController extends Controller
      * @param  \App\Models\FoodCategories  $foodCategories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FoodCategories $foodCategories)
+    public function destroy($id)
     {
-        //
+        $foodCategories = FoodCategories::find($id)->delete();
+        return redirect('/foodCategories')->with('status','Deleted Successfully');
     }
 }
