@@ -1,6 +1,7 @@
 @extends('admin.master')
 @section('content')
   <!-- Content Wrapper. Contains page content -->
+<div class="wrapper">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -88,5 +89,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+</div>
  @endsection
 

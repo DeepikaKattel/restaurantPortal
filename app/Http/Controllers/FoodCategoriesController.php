@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FoodCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class FoodCategoriesController extends Controller
 {
@@ -39,6 +40,13 @@ class FoodCategoriesController extends Controller
     {
         $foodCategories = new FoodCategories();
         $foodCategories->name = request('name');
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $fileName = rand() . "." . $image->getClientOriginalExtension();
+            $destination_path = public_path("FoodCategoryImage/");
+            $image->move($destination_path, $fileName);
+            $foodCategories->image = 'FoodCategoryImage/' . $fileName;
+        }
         $foodCategories->save();
         $food = $foodCategories->save();
         if($food) {
@@ -78,10 +86,21 @@ class FoodCategoriesController extends Controller
      * @param  \App\Models\FoodCategories  $foodCategories
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $foodCategories = FoodCategories::find($id);
         $foodCategories->name = request('name');
+        if ($request->hasFile("image")) {
+            if ($foodCategories->image) {
+                File::delete(public_path($foodCategories->image));
+            }
+            $image = $request->image;
+            $fileName = time() . "." . $image->getClientOriginalExtension();
+            $destination_path = public_path("foodCategoryImage/");
+            $image->move($destination_path, $fileName);
+
+            $foodCategories->image = 'foodCategoryImage/' . $fileName;
+        }
         $foodCategories->save();
         $food = $foodCategories->save();
         if ($food) {

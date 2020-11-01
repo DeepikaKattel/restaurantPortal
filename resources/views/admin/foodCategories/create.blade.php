@@ -40,7 +40,19 @@
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category">
                   </div>
+                  <div class="form-group">
+                      <label for="image">Choose Image</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" class="form-control" id="image" name="image" placeholder="Choose Image">
+                        </div>
+                        <div class="input-group-append">
+                          <span class="input-group-text" id="">Upload</span>
+                        </div>
+                      </div>
+                  </div>
                 </div>
+
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>

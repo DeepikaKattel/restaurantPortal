@@ -35,6 +35,7 @@
                     <tr>
                       <th>S.N.</th>
                       <th>Name</th>
+                      <th>Image</th>
                       <th>Action</th>
                     </tr>
                     </thead>
@@ -43,6 +44,7 @@
                        <tr>
                            <td>{{$loop->iteration}}</td>
                            <td>{{$f->name}}</td>
+                           <td><img src="{{asset("$f->image")}}" style="height:30px;width: 50px;"></td>
                            <td id="none">
                                <a href="{{route('foodCategories.edit',$f->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                                @method('DELETE')
@@ -55,6 +57,7 @@
                     <tr>
                       <th>S.N.</th>
                       <th>Name</th>
+                      <th>Image</th>
                       <th>Action</th>
                     </tr>
                     </tfoot>

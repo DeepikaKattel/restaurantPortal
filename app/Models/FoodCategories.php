@@ -12,6 +12,6 @@ class FoodCategories extends Model
     protected $table='food_categories';
 
     protected $fillable = ([
-        'name',
+        'name','image',
     ]);
 }
