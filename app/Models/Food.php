@@ -4,8 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Food extends Model
 {
-    use HasFactory;
+    use HasFactory,notifiable;
+    protected $table='food';
+
+    protected $fillable = ([
+        'name','description','price','image','category_id',
+    ]);
 }

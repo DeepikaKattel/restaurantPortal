@@ -85,7 +85,7 @@
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Restaurant</span>
     </a>
 
     <!-- Sidebar -->
@@ -116,7 +116,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cutlery"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Food Categories
                 <i class="fas fa-angle-left right"></i>
@@ -137,6 +137,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Food
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('food.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>List Food Items</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('food.create') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Food Items</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           {{--<li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-circle text-warning"></i>

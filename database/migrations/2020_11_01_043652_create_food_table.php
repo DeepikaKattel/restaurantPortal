@@ -14,7 +14,13 @@ class CreateFoodTable extends Migration
     public function up()
     {
         Schema::create('food', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('description');
+            $table->float('price');
+            $table->string('image');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('food_categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

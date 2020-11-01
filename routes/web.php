@@ -24,3 +24,6 @@ Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->n
 
 Route::resource('/foodCategories', 'App\Http\Controllers\FoodCategoriesController');
 Route::get('/foodCategories/destroy/{id}', 'App\Http\Controllers\FoodCategoriesController@destroy')->name('f.destroy');
+
+Route::resource('/food', 'App\Http\Controllers\FoodController');
+Route::get('/food/destroy/{id}', 'App\Http\Controllers\FoodController@destroy')->name('food.destroy');

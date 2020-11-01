@@ -29,28 +29,28 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Food</h3>
+                <h3 class="card-title">Food Categories</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('food.store')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('food.update',$food->id)}}" method="post" enctype="multipart/form-data">
               @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Food">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Food" value="{{old('name', $food->name)}}">
                   </div>
                   <div class="form-group">
                       <label for="description">Description</label>
-                      <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description">
+                      <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description" value="{{old('description', $food->description)}}">
                   </div>
                   <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="float" class="form-control" id="price" name="price" placeholder="Enter Price">
+                    <input type="float" class="form-control" id="price" name="price" placeholder="Enter Price" value="{{old('price', $food->price)}}">
                   </div>
                   <div class="form-group">
                      <label>Select Category</label>
-                     <select class="form-control" name="category_id" id="category_id">
+                     <select class="form-control">
                      @foreach($foodCategories as $food)
                        <option value="{{$food->id}}">{{$food->name}}</option>
                      @endforeach
@@ -61,7 +61,7 @@
                       <label for="image">Choose Image</label>
                       <div class="input-group">
                         <div class="custom-file">
-                          <input type="file" class="form-control" id="image" name="image" placeholder="Choose Image">
+                          <input type="file" class="form-control" id="image" name="image" placeholder="Choose Image" value="{{old('image', $food->image)}}">
                         </div>
                         <div class="input-group-append">
                           <span class="input-group-text" id="">Upload</span>
