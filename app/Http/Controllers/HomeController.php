@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FoodCategories;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -22,9 +26,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
-        return view('admin.dashboard');
+        $users = User::all()->count();
+        $foodCategories = FoodCategories::all()->pluck('name')->tojson();
+        $foodCategory = FoodCategories::all()->pluck('name')->tojson();
+        return view('admin.dashboard',compact('foodCategories','users','foodCategory'));
     }
 
 

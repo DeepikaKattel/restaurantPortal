@@ -14,4 +14,9 @@ class FoodCategories extends Model
     protected $fillable = ([
         'name','image',
     ]);
+
+    public function food()
+    {
+        return $this->hasMany('App\Models\Food');
+    }
 }

@@ -14,4 +14,9 @@ class Food extends Model
     protected $fillable = ([
         'name','description','price','image','category_id',
     ]);
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\FoodCategories','category_id');
+    }
 }

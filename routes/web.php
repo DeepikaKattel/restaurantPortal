@@ -18,8 +18,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 
 Route::resource('/foodCategories', 'App\Http\Controllers\FoodCategoriesController');
