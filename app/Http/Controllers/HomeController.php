@@ -26,6 +26,8 @@ class HomeController extends Controller
     {
         return view('admin.dashboard');
     }
+
+
     public function logout()
     {
         Auth::logout();
