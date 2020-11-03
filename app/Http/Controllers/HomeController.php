@@ -34,6 +34,10 @@ class HomeController extends Controller
         $foodCategory = FoodCategories::all()->pluck('name')->tojson();
         return view('admin.dashboard',compact('foodCategories','users','foodCategory'));
     }
+    public function profile()
+    {
+        return view('admin.profile');
+    }
 
 
     public function logout()

@@ -26,3 +26,5 @@ Route::get('/foodCategories/destroy/{id}', 'App\Http\Controllers\FoodCategoriesC
 
 Route::resource('/food', 'App\Http\Controllers\FoodController');
 Route::get('/food/destroy/{id}', 'App\Http\Controllers\FoodController@destroy')->name('food.destroy');
+
+Route::resource('/profile', 'App\Http\Controllers\ProfileController');
