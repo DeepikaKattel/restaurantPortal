@@ -22,7 +22,7 @@ class ProfileController extends Controller
         $userDetails = DB::table('Users')
             ->select('users.id','users.name', 'users.email')
             ->where('id','=', $user_id)
-            ->get();
+            ->first();
         return view('admin.profile.index', compact('userDetails'));
     }
 
@@ -67,7 +67,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $userDetails = User::find($id);
-        return view('user.edit', compact('userDetails'));
+        return view('admin.profile.edit', compact('userDetails'));
     }
 
     /**
@@ -82,7 +82,6 @@ class ProfileController extends Controller
         $userDetails = User::find($id);
         $userDetails->name = request('name');
         $userDetails->email = request('email');
-        $userDetails->password = Hash::make($request['password']);
         $userDetails->save();
         $userSave = $userDetails->save();
         if ($userSave) {
