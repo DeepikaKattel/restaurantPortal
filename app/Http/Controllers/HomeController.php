@@ -38,7 +38,10 @@ class HomeController extends Controller
     {
         return view('admin.profile');
     }
-
+    public function approval()
+    {
+        return view('approval');
+    }
 
     public function logout()
     {
