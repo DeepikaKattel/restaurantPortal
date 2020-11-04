@@ -16,6 +16,9 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!auth()->user()->admin) {
+            return redirect()->route('dashboard');
+        }
         return $next($request);
     }
 }

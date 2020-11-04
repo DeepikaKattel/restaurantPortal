@@ -25,6 +25,10 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['approved'])->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
     });
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/users', 'UserController@index')->name('admin.users.index');
+        Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
+    });
 });
 
 Route::resource('/foodCategories', 'App\Http\Controllers\FoodCategoriesController');
