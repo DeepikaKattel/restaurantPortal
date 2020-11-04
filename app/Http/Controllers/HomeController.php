@@ -32,7 +32,9 @@ class HomeController extends Controller
         $users = User::all()->count();
         $foodCategories = FoodCategories::all()->pluck('name')->tojson();
         $foodCategory = FoodCategories::all()->pluck('name')->tojson();
-        return view('admin.dashboard',compact('foodCategories','users','foodCategory'));
+        $usersUnapproved = User::whereNull('approved_at')->get();
+        $usersCount = count($usersUnapproved);
+        return view('admin.dashboard',compact('foodCategories','users','foodCategory','usersUnapproved','usersCount'));
     }
     public function profile()
     {

@@ -7,12 +7,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Users to approve</h1>
+              <h1>Unapproved Users</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Food Categories</li>
+                <li class="breadcrumb-item active">Unapproved users</li>
               </ol>
             </div>
           </div>
@@ -55,7 +55,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4">No users found.</td>
+                            <td colspan="4" style="padding-left:40%">No users yet to be approved.</td>
                         </tr>
                     @endforelse
                     </tbody>
