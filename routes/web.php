@@ -21,13 +21,16 @@ Auth::routes();
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/approval', 'HomeController@approval')->name('approval');
+    Route::get('/approval', [App\Http\Controllers\HomeController::class, 'approval'])->name('approval');
     Route::middleware(['approved'])->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
     });
     Route::middleware(['admin'])->group(function () {
-        Route::get('/users', 'UserController@index')->name('admin.users.index');
-        Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
+        Route::get('/usersUnapproved', [App\Http\Controllers\UserController::class, 'unapproved'])->name('admin.unapproved');
+        Route::get('/users/{user_id}/approve', [App\Http\Controllers\UserController::class, 'approve'])->name('admin.approve');
+
+        Route::resource('/users', 'App\Http\Controllers\UserController');
+        Route::get('/users/destroy/{id}', 'App\Http\Controllers\UserController@destroy')->name('u.destroy');
     });
 });
 
