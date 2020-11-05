@@ -50,7 +50,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->created_at }}</td>
-                            <td><a href="{{ route('admin.users.approve', $user->id) }}"
+                            <td><a href="{{ route('admin.approve', $user->id) }}"
                                    class="btn btn-primary btn-sm">Approve</a></td>
                         </tr>
                     @empty
