@@ -1,14 +1,15 @@
 *{
   box-sizing: border-box;
-  margin:0px;
+  margin-top:0px;
   padding:0px;
 }
 
 body{
-  background:url(../images/3.jpg);
+  background:url(../images/bg.jpg) no-repeat center center fixed;
   font-family: 'Titillium Web', sans-serif;
   background-size:cover;
 }
+
 
 a {
   text-decoration: none;
@@ -16,7 +17,7 @@ a {
   transition: .5s ease;
 }
 a:hover {
-  color: #179b77;
+  color:  #8255a3;
 }
 
 .form {
@@ -56,11 +57,11 @@ a:hover {
   transition: .5s ease;
 }
 .tab-group li a:hover {
-  background: #179b77;
+  background: #8255a3;
   color: #ffffff;
 }
 .tab-group .active a {
-  background: #1ab188;
+  background: #8255a3;
   color: #ffffff;
 }
 
@@ -71,8 +72,8 @@ a:hover {
 h1 {
   text-align: center;
   color: #fff;
-  font-weight: 300;
-  margin: 0 0 40px;
+  font-weight: 700;
+  margin: 20px 0 40px;
 }
 
 label {
@@ -149,12 +150,12 @@ input:focus{
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #1ab188;
+  background:  #8255a3;
   color: #ffffff;
   transition: all 0.5s ease;
 }
 .button:hover, .button:focus {
-  background: #179b77;
+  background:  #8255a3;
 }
 
 .button-block {
