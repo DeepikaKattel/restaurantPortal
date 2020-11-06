@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FoodCategories;
+use App\Models\Categories;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,8 +30,8 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::all()->count();
-        $foodCategories = FoodCategories::all()->pluck('name')->tojson();
-        $foodCategory = FoodCategories::all()->pluck('name')->tojson();
+        $foodCategories = Categories::all()->pluck('name')->tojson();
+        $foodCategory = Categories::all()->pluck('name')->tojson();
         $usersUnapproved = User::whereNull('approved_at')->get();
         $usersCount = count($usersUnapproved);
         return view('admin.dashboard',compact('foodCategories','users','foodCategory','usersUnapproved','usersCount'));

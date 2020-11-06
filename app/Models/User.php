@@ -24,10 +24,7 @@ class User extends Authenticatable
         'approved_at'
     ];
 
-    public function order()
-    {
-        return $this->hasMany(Order::class);
-    }
+
 
     /**
      * The attributes that should be hidden for arrays.

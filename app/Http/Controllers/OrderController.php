@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -13,7 +17,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orderDetails = DB::table('Orders')->get();
+        return view('admin.order.index', compact('orderDetails'));
     }
 
     /**
@@ -34,7 +39,23 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Order();
+        $order->user_id = Auth::user()->id;
+        $order->item_id = request('item_id');
+        $order->quantity = request('quantity');
+        $item = DB::table('item')
+            ->select('price')
+            ->where('id','=',$order->item_id)
+            ->value('price');
+        $order->price = $order->quantity * $item->price;
+        $order->loyalty_points = $order->price / 10;
+        $order->save();
+        $orderSave = $order->save();
+        if($orderSave) {
+            return redirect('/order')->with("status", "The record has been stored");
+        } else {
+            return redirect('/order')->with("error", "There is an error");
+        }
     }
 
     /**
@@ -56,7 +77,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::find($id);
+        $items = Item::get();
+        return view('admin.order.edit', compact('order','items'));
     }
 
     /**
@@ -68,7 +91,23 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+        $order->user_id = Auth::user()->id;
+        $order->item_id = request('item_id');
+        $order->quantity = request('quantity');
+        $item = DB::table('item')
+            ->select('price')
+            ->where('id','=',$order->item_id)
+            ->value('price');
+        $order->price = $order->quantity * $item->price;
+        $order->loyalty_points = $order->price / 10;
+        $order->save();
+        $orderSave = $order->save();
+        if($orderSave) {
+            return redirect('/order')->with("status", "The record has been updated");
+        } else {
+            return redirect('/order')->with("error", "There is an error");
+        }
     }
 
     /**
@@ -79,6 +118,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id)->delete();
+        return redirect('/order')->with('status','Deleted Successfully');
     }
 }

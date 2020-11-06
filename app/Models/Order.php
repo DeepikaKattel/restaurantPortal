@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Model\Trip;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,15 +12,15 @@ class Order extends Model
     protected $table='orders';
 
     protected $fillable = ([
-        'user_id','food_id','loyalty_points'
+        'user_id','item_id','price','quantity','loyalty_points'
     ]);
 
     public function user()
     {
-        return $this->hasOne(User::class,'user_id');
+        return $this->belongsTo(User::class);
     }
-    public function food()
+    public function item()
     {
-        return $this->hasOne(Food::class,'food_id');
+        return $this->belongsTo(Item::class);
     }
 }

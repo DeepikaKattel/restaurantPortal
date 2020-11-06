@@ -34,10 +34,14 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::resource('/foodCategories', 'App\Http\Controllers\FoodCategoriesController');
-Route::get('/foodCategories/destroy/{id}', 'App\Http\Controllers\FoodCategoriesController@destroy')->name('f.destroy');
+Route::resource('/categories', 'App\Http\Controllers\CategoriesController');
+Route::get('/categories/destroy/{id}', 'App\Http\Controllers\CategoriesController@destroy')->name('c.destroy');
 
-Route::resource('/food', 'App\Http\Controllers\FoodController');
-Route::get('/food/destroy/{id}', 'App\Http\Controllers\FoodController@destroy')->name('food.destroy');
+Route::resource('/item', 'App\Http\Controllers\ItemController');
+Route::get('/item/destroy/{id}', 'App\Http\Controllers\ItemController@destroy')->name('item.destroy');
+
+Route::resource('/order', 'App\Http\Controllers\OrderController');
+Route::get('/order/destroy/{id}', 'App\Http\Controllers\OrderController@destroy')->name('order.destroy');
+
 
 Route::resource('/profile', 'App\Http\Controllers\ProfileController');

@@ -7,12 +7,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Food Categories</h1>
+              <h1>Items</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Food Categories</li>
+                <li class="breadcrumb-item active">Items</li>
               </ol>
             </div>
           </div>
@@ -26,7 +26,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Table showing different food categories</h3>
+                  <h3 class="card-title">Table showing different items</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -35,20 +35,26 @@
                     <tr>
                       <th>S.N.</th>
                       <th>Name</th>
+                      <th>Description</th>
+                      <th>Price</th>
                       <th>Image</th>
+                      <th>Category</th>
                       <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($foodCategories as $f)
+                    @foreach($item as $i)
                        <tr>
                            <td>{{$loop->iteration}}</td>
-                           <td>{{$f->name}}</td>
-                           <td><img src="{{asset("$f->image")}}" style="height:30px;width: 50px;"></td>
+                           <td>{{$i->name}}</td>
+                           <td>{{$i->description}}</td>
+                           <td>{{$i->price}}</td>
+                           <td><img src="{{asset("$i->image")}}" style="height:30px;width: 50px;"></td>
+                           <td>{{$i->category_id}}</td>
                            <td id="none">
-                               <a href="{{route('foodCategories.edit',$f->id)}}"><i class="fa fa-lg fa-edit"></i></a>
+                               <a href="{{route('item.edit',$i->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                                @method('DELETE')
-                               <a onclick="return confirm('Do you want to delete')" href="{{route('f.destroy',$f->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
+                               <a onclick="return confirm('Do you want to delete')" href="{{route('item.destroy',$i->id)}}"><i class="fa fa-lg fa-minus-circle" style="color:red"></i></a>
                            </td>
                        </tr>
                    @endforeach
@@ -57,7 +63,10 @@
                     <tr>
                       <th>S.N.</th>
                       <th>Name</th>
+                      <th>Description</th>
+                      <th>Price</th>
                       <th>Image</th>
+                      <th>Category</th>
                       <th>Action</th>
                     </tr>
                     </tfoot>

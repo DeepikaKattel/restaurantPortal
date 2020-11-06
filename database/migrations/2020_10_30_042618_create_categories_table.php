@@ -13,7 +13,7 @@ class CreateFoodCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('food_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image')->nullable();

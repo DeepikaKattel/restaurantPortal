@@ -6,17 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class FoodCategories extends Model
+class Item extends Model
 {
     use HasFactory,notifiable;
-    protected $table='food_categories';
+    protected $table='item';
 
     protected $fillable = ([
-        'name','image',
+        'name','description','price','image','category_id',
     ]);
 
-    public function food()
+    public function category()
     {
-        return $this->hasMany('App\Models\Food');
+        return $this->belongsTo('App\Models\Categories','category_id');
     }
+
+
 }
