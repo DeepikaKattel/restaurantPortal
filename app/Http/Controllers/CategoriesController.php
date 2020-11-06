@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -27,7 +30,12 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $user = User::where('id',Auth::user()->id)
+            ->where('user_type','normal')
+            ->value('id');
+        $count = Item::where('user_id', $user)
+            ->count();
+        return view('admin.categories.create',compact('count'));
     }
 
     /**
@@ -47,6 +55,7 @@ class CategoriesController extends Controller
             $image->move($destination_path, $fileName);
             $categories->image = 'categoryImage/' . $fileName;
         }
+        $categories->user_id = Auth::user()->id;
         $categories->save();
         $category = $categories->save();
         if($category) {

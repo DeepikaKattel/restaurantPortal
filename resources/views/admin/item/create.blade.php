@@ -33,48 +33,54 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('item.store')}}" method="post" enctype="multipart/form-data">
-              @csrf
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Item">
-                  </div>
-                  <div class="form-group">
-                      <label for="description">Description</label>
-                      <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description">
-                  </div>
-                  <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="float" class="form-control" id="price" name="price" placeholder="Enter Price">
-                  </div>
-                  <div class="form-group">
-                     <label>Select Category</label>
-                     <select class="form-control" name="category_id" id="category_id">
-                     @foreach($itemCategories as $c)
-                       <option value="{{$c->id}}">{{$c->name}}</option>
-                     @endforeach
-                     </select>
-                  </div>
-
-                  <div class="form-group">
-                      <label for="image">Choose Image</label>
-                      <div class="input-group">
-                        <div class="custom-file">
-                          <input type="file" class="form-control" id="image" name="image" placeholder="Choose Image">
-                        </div>
-                        <div class="input-group-append">
-                          <span class="input-group-text" id="">Upload</span>
-                        </div>
+              @if($count < 5)
+                  <form action="{{route('item.store')}}" method="post" enctype="multipart/form-data">
+                  @csrf
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Item">
                       </div>
-                  </div>
-                </div>
+                      <div class="form-group">
+                          <label for="description">Description</label>
+                          <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description">
+                      </div>
+                      <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="float" class="form-control" id="price" name="price" placeholder="Enter Price">
+                      </div>
+                      <div class="form-group">
+                         <label>Select Category</label>
+                         <select class="form-control" name="category_id" id="category_id">
+                         @foreach($itemCategories as $c)
+                           <option value="{{$c->id}}">{{$c->name}}</option>
+                         @endforeach
+                         </select>
+                      </div>
 
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </form>
+                      <div class="form-group">
+                          <label for="image">Choose Image</label>
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input type="file" class="form-control" id="image" name="image" placeholder="Choose Image">
+                            </div>
+                            <div class="input-group-append">
+                              <span class="input-group-text" id="">Upload</span>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+               @else
+                  <div class="card-body">
+                    <p> Sorry, you cannot add more items. Please contact for premium subscription.</h4>
+                  </div>
+               @endif
             </div>
             <!-- /.card -->       </div>
         <!-- /.row -->

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Categories;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -28,8 +30,13 @@ class ItemController extends Controller
      */
     public function create()
     {
+        $user = User::where('id',Auth::user()->id)
+            ->where('user_type','normal')
+            ->value('id');
+        $count = Item::where('user_id', $user)
+            ->count();
         $itemCategories = Categories::get();
-        return view('admin.item.create',compact('itemCategories'));
+        return view('admin.item.create',compact('itemCategories','count'));
     }
 
     /**
@@ -45,6 +52,7 @@ class ItemController extends Controller
         $item->description = request('description');
         $item->price = request('price');
         $item->category_id = request('category_id');
+        $item->user_id = Auth::user()->id;
         if ($request->hasFile('image')) {
             $image = $request->image;
             $fileName = rand() . "." . $image->getClientOriginalExtension();

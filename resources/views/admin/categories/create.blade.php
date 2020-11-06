@@ -33,6 +33,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
+              @if($count < 2)
               <form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
               @csrf
                 <div class="card-body">
@@ -52,12 +53,16 @@
                       </div>
                   </div>
                 </div>
-
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
+            @else
+             <div class="card-body">
+               <p> Sorry, you cannot add more items. Please contact for premium subscription.</h4>
+             </div>
+            @endif
             </div>
             <!-- /.card -->       </div>
         <!-- /.row -->
