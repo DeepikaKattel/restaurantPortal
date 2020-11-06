@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->float('price');
             $table->integer('loyalty_points')->default(0);
             $table->foreign('item_id')->references('id')->on('item')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

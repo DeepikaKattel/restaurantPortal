@@ -115,14 +115,22 @@
             </a>
           </li>
           <li class="nav-item has-treeview menu-open">
-          <a href="{{route('admin.unapproved') }}" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-              Unapproved Users
-              <span class="badge badge-danger right"></span>
-            </p>
-          </a>
-        </li>
+              <a href="{{route('admin.unapproved') }}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Unapproved Users
+                  <span class="badge badge-danger right"></span>
+                </p>
+              </a>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="{{route('order.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>
+                Orders
+              </p>
+            </a>
+          </li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -147,49 +155,48 @@
             </ul>
           </li>
 
-
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
+              <i class="nav-icon fas fa-list-alt"></i>
               <p>
-                Food Categories
+                Categories
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('foodCategories.index') }}" class="nav-link">
+                <a href="{{ route('categories.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Food Categories</p>
+                  <p>List Categories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('foodCategories.create') }}" class="nav-link">
+                <a href="{{ route('categories.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Food Categories</p>
+                  <p>Add Categories</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
+                <i class="nav-icon fas fa-balance-scale"></i>
                 <p>
-                  Food
+                  Items
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('food.index') }}" class="nav-link">
+                  <a href="{{ route('item.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>List Food Items</p>
+                    <p>List Items</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('food.create') }}" class="nav-link">
+                  <a href="{{ route('item.create') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add Food Items</p>
+                    <p>Add Items</p>
                   </a>
                 </li>
               </ul>
