@@ -16,6 +16,7 @@ class AddAdminToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('admin')->default(false);
             $table->timestamp('approved_at')->nullable();
+            $table->string('user_type')->default('normal');
         });
     }
 
