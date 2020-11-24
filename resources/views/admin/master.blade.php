@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Let It Grow | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -220,6 +220,75 @@
                   <a href="{{ route('offer.create') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add Offer</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                  About
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('adminAbout.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>List About</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('adminAbout.create') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add About</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                  Terms and Condition
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('terms.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>List Terms</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('terms.create') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Terms</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                  Privacy Policy
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('privacy.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>List Policicies</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('privacy.create') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Policies</p>
                   </a>
                 </li>
               </ul>

@@ -17,7 +17,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = DB::table('abouts')->get();
+        $about = DB::table('about')->get();
         return view('admin.about.index',compact('about'));
     }
 

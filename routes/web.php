@@ -49,4 +49,11 @@ Route::get('/offer/destroy/{id}', 'App\Http\Controllers\OfferController@destroy'
 Route::resource('/adminAbout', 'App\Http\Controllers\AboutController');
 Route::get('/adminAbout/destroy/{id}', 'App\Http\Controllers\AboutController@destroy')->name('a.destroy');
 
+Route::resource('/terms', 'App\Http\Controllers\TermsConditionController');
+Route::get('/terms/destroy/{id}', 'App\Http\Controllers\TermsConditionController@destroy')->name('t.destroy');
+
+
+Route::resource('/privacy', 'App\Http\Controllers\PrivacyPolicyController');
+Route::get('/privacy/destroy/{id}', 'App\Http\Controllers\PrivacyPolicyController@destroy')->name('p.destroy');
+
 Route::resource('/profile', 'App\Http\Controllers\ProfileController');

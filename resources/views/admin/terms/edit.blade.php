@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>About Form</h1>
+            <h1>Terms Form</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">About Form</li>
+              <li class="breadcrumb-item active">Terms Form</li>
             </ol>
           </div>
         </div>
@@ -29,28 +29,23 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">About</h3>
+                <h3 class="card-title">Terms</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('adminAbout.update',$about->id)}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('terms.update',$terms->id)}}" method="post" enctype="multipart/form-data">
               @csrf
               @method('PATCH')
               <div class="card-body">
                   <div class="form-group">
                     <label for="about">Heading</label>
-                    <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter heading">
+                    <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter heading" value="{{old('heading', $terms->heading)}}">
                   </div>
                   
                   <div class="form-group">
                     <label for="about"> Description</label>
-                    <textarea class="form-control" id="description" name="description" placeholder="Description"></textarea>
-                  </div>         
-
-                  <div class="form-group">
-                      <label>Image</label>
-                      <input type="file" name="image" id="image" class="form-control" required>
-                  </div>            
+                    <textarea class="form-control" id="description" name="description" placeholder="Description">{{old('heading', $terms->heading)}}</textarea>
+                  </div>                             
                   
                 </div>
                 <!-- /.card-body -->

@@ -46,9 +46,9 @@
                     <textarea class="form-control" id="description" name="description" placeholder="Description"></textarea>
                   </div>        
 
-                   <div class="form-group">
-                      <label>Image</label>
-                      <input type="file" name="image" id="image" class="form-control" required>
+                  <div class="form-group">
+                    <label>Image</label>
+                    <input type="file" name="image" id="image" class="form-control" required>
                   </div>        
                   
                 </div>
