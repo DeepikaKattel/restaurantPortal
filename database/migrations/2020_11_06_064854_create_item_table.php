@@ -19,6 +19,7 @@ class CreateItemTable extends Migration
             $table->string('description');
             $table->float('price');
             $table->string('image');
+            $table->string('isSpecial')->default('no');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

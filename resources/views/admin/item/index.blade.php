@@ -38,6 +38,7 @@
                       <th>Description</th>
                       <th>Price</th>
                       <th>Image</th>
+                      <th>Special</th>
                       <th>Category</th>
                       <th>Action</th>
                     </tr>
@@ -50,6 +51,7 @@
                            <td>{{$i->description}}</td>
                            <td>{{$i->price}}</td>
                            <td><img src="{{asset("$i->image")}}" style="height:30px;width: 50px;"></td>
+                           <td>{{$i->isSpecial}}</td>
                            <td>{{$i->category_id}}</td>
                            <td id="none">
                                <a href="{{route('item.edit',$i->id)}}"><i class="fa fa-lg fa-edit"></i></a>
@@ -66,6 +68,7 @@
                       <th>Description</th>
                       <th>Price</th>
                       <th>Image</th>
+                      <th>Special</th>
                       <th>Category</th>
                       <th>Action</th>
                     </tr>

@@ -51,6 +51,7 @@ class ItemController extends Controller
         $item->name = request('name');
         $item->description = request('description');
         $item->price = request('price');
+        $item->isSpecial = request('isSpecial');
         $item->category_id = request('category_id');
         $item->user_id = Auth::user()->id;
         if ($request->hasFile('image')) {
@@ -105,6 +106,7 @@ class ItemController extends Controller
         $item->name = request('name');
         $item->description = request('description');
         $item->price = request('price');
+        $item->isSpecial = request('isSpecial');
         $item->category_id = request('category_id');
         if ($request->hasFile("image")) {
             if ($item->image) {

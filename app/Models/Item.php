@@ -12,7 +12,7 @@ class Item extends Model
     protected $table='item';
 
     protected $fillable = ([
-        'name','description','price','image','category_id',
+        'name','description','price','image','category_id','isSpecial'
     ]);
 
     public function category()

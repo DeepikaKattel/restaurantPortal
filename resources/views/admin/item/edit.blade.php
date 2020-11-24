@@ -56,6 +56,13 @@
                      @endforeach
                      </select>
                   </div>
+                  <div class="form-group">
+                      <label>Special</label>
+                      <select class="form-control" name="isSpecial" id="isSpecial">                         
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>                         
+                      </select>
+                  </div>
 
                   <div class="form-group">
                       <label for="image">Choose Image</label>
