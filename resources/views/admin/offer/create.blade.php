@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Items Form</h1>
+            <h1>Offer Form</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Items Form</li>
+              <li class="breadcrumb-item active">Offer Form</li>
             </ol>
           </div>
         </div>
@@ -29,59 +29,44 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Items</h3>
+                <h3 class="card-title">Offer</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('item.update',$item->id)}}" method="post" enctype="multipart/form-data">
+             
+              <form action="{{route('offer.store')}}" method="post" enctype="multipart/form-data">
               @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Food" value="{{old('name', $food->name)}}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category">
                   </div>
-                  <div class="form-group">
-                      <label for="description">Description</label>
-                      <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter Description">{{old('description', $food->description)}}</textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="float" class="form-control" id="price" name="price" placeholder="Enter Price" value="{{old('price', $food->price)}}">
-                  </div>
-                  <div class="form-group">
-                     <label>Select Category</label>
-                     <select class="form-control">
-                     @foreach($itemCategories as $c)
-                       <option value="{{$c->id}}">{{$c->name}}</option>
-                     @endforeach
-                     </select>
-                  </div>
-                  <div class="form-group">
-                      <label>Special</label>
-                      <select class="form-control" name="isSpecial" id="isSpecial">                         
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>                         
-                      </select>
-                  </div>
-
                   <div class="form-group">
                       <label for="image">Choose Image</label>
                       <div class="input-group">
                         <div class="custom-file">
-                          <input type="file" class="form-control" id="image" name="image" placeholder="Choose Image" value="{{old('image', $food->image)}}">
+                          <input type="file" class="form-control" id="image" name="image" placeholder="Choose Image">
                         </div>
                         <div class="input-group-append">
                           <span class="input-group-text" id="">Upload</span>
                         </div>
                       </div>
                   </div>
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="offerCode">Offer Code</label>
+                    <input type="text" class="form-control" id="offerCode" name="offerCode" placeholder="Enter Offer Code">
+                  </div>
                 </div>
-
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
+           
             </div>
             <!-- /.card -->       </div>
         <!-- /.row -->

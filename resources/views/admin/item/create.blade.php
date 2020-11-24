@@ -43,7 +43,7 @@
                       </div>
                       <div class="form-group">
                           <label for="description">Description</label>
-                          <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description">
+                          <textarea class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
                       </div>
                       <div class="form-group">
                         <label for="price">Price</label>
