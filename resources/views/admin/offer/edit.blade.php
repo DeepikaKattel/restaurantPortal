@@ -78,5 +78,13 @@
   <!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
+<script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
+<script>
+    tinymce.init({
+        selector:'textarea.form-control',
+        width: 450,
+        height: 300
+    });
+</script>
  @endsection
 

@@ -46,5 +46,7 @@ Route::get('/order/destroy/{id}', 'App\Http\Controllers\OrderController@destroy'
 Route::resource('/offer', 'App\Http\Controllers\OfferController');
 Route::get('/offer/destroy/{id}', 'App\Http\Controllers\OfferController@destroy')->name('offer.destroy');
 
+Route::resource('/adminAbout', 'App\Http\Controllers\AboutController');
+Route::get('/adminAbout/destroy/{id}', 'App\Http\Controllers\AboutController@destroy')->name('a.destroy');
 
 Route::resource('/profile', 'App\Http\Controllers\ProfileController');

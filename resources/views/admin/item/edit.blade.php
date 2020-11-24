@@ -42,7 +42,7 @@
                   </div>
                   <div class="form-group">
                       <label for="description">Description</label>
-                      <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter Description">{{old('description', $food->description)}}</textarea>
+                      <textarea class="form-control" id="description" name="description" placeholder="Enter Description">{{old('description', $food->description)}}</textarea>
                   </div>
                   <div class="form-group">
                     <label for="price">Price</label>
@@ -92,5 +92,13 @@
   <!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
+<script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
+<script>
+    tinymce.init({
+        selector:'textarea.form-control',
+        width: 450,
+        height: 300
+    });
+</script>
  @endsection
 

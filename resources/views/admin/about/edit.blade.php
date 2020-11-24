@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Offer Form</h1>
+            <h1>About Form</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Offer Form</li>
+              <li class="breadcrumb-item active">About Form</li>
             </ol>
           </div>
         </div>
@@ -29,44 +29,37 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Offer</h3>
+                <h3 class="card-title">About</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-             
-              <form action="{{route('offer.store')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('adminAbout.update',$about->id)}}" method="post" enctype="multipart/form-data">
               @csrf
-                <div class="card-body">
+              @method('PATCH')
+              <div class="card-body">
                   <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category">
+                    <label for="about">Heading</label>
+                    <input type="text" class="form-control" id="heading" name="heading" placeholder="Enter heading">
                   </div>
+                  
                   <div class="form-group">
-                      <label for="image">Choose Image</label>
-                      <div class="input-group">
-                        <div class="custom-file">
-                          <input type="file" class="form-control" id="image" name="image" placeholder="Choose Image">
-                        </div>
-                        <div class="input-group-append">
-                          <span class="input-group-text" id="">Upload</span>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" placeholder="Enter Description"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="offerCode">Offer Code</label>
-                    <input type="text" class="form-control" id="offerCode" name="offerCode" placeholder="Enter Offer Code">
-                  </div>
+                    <label for="about"> Description</label>
+                    <textarea class="form-control" id="description" name="description" placeholder="Description"></textarea>
+                  </div>         
+
+                   <div class="form-group">
+                      <label>Image</label>
+                      <input type="file" name="image" id="image" class="form-control" required>
+                  </div>       
+                  
+                
+                  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
-           
             </div>
             <!-- /.card -->       </div>
         <!-- /.row -->
@@ -81,7 +74,7 @@
 <script>
     tinymce.init({
         selector:'textarea.form-control',
-        width: 450,
+        width: 440,
         height: 300
     });
 </script>
