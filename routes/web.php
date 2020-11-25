@@ -56,4 +56,7 @@ Route::get('/terms/destroy/{id}', 'App\Http\Controllers\TermsConditionController
 Route::resource('/privacy', 'App\Http\Controllers\PrivacyPolicyController');
 Route::get('/privacy/destroy/{id}', 'App\Http\Controllers\PrivacyPolicyController@destroy')->name('p.destroy');
 
+Route::resource('/faq', 'App\Http\Controllers\FaqController');
+Route::get('/faq/destroy/{id}', 'App\Http\Controllers\FaqController@destroy')->name('f.destroy');
+
 Route::resource('/profile', 'App\Http\Controllers\ProfileController');
