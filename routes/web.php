@@ -59,4 +59,7 @@ Route::get('/privacy/destroy/{id}', 'App\Http\Controllers\PrivacyPolicyControlle
 Route::resource('/faq', 'App\Http\Controllers\FaqController');
 Route::get('/faq/destroy/{id}', 'App\Http\Controllers\FaqController@destroy')->name('f.destroy');
 
+Route::resource('/feedback', 'App\Http\Controllers\FeedbackController');
+Route::get('/feedback/destroy/{id}', 'App\Http\Controllers\FeedbackController@destroy')->name('feedback.destroy');
+
 Route::resource('/profile', 'App\Http\Controllers\ProfileController');
