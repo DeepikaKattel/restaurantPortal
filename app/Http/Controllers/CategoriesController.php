@@ -53,7 +53,7 @@ class CategoriesController extends Controller
             $fileName = rand() . "." . $image->getClientOriginalExtension();
             $destination_path = public_path("categoryImage/");
             $image->move($destination_path, $fileName);
-            $categories->image = 'categoryImage/' . $fileName;
+            $categories->image = $fileName;
         }
         $categories->user_id = Auth::user()->id;
         $categories->save();

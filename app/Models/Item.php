@@ -19,6 +19,9 @@ class Item extends Model
     {
         return $this->belongsTo('App\Models\Categories','category_id');
     }
+    public function cartItem(){
+        return $this->hasMany(Carts::class);
+    }
 
 
 }

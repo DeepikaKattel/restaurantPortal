@@ -63,3 +63,12 @@ Route::resource('/feedback', 'App\Http\Controllers\FeedbackController');
 Route::get('/feedback/destroy/{id}', 'App\Http\Controllers\FeedbackController@destroy')->name('feedback.destroy');
 
 Route::resource('/profile', 'App\Http\Controllers\ProfileController');
+
+Route::get('/cart', 'App\Http\Controllers\CartsController@getCart');
+Route::post('/cart/add', 'App\Http\Controllers\CartsController@addToCart');
+Route::get('/cart/list', 'App\Http\Controllers\CartsController@getCartList');
+Route::post('/cart/remove', 'App\Http\Controllers\CartsController@removeFromCart');
+Route::get('/checkout', 'App\Http\Controllers\CartsController@checkoutForm');
+Route::post('/checkout', 'App\Http\Controllers\CartsController@checkout');
+
+Route::get('/admin/checkouts','App\Http\Controllers\CheckoutController@getCheckouts');
