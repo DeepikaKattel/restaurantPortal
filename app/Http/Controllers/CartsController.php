@@ -40,15 +40,15 @@ class CartsController extends Controller
             if ($cart[0] ?? '') {
                 $this->createCartItem($item->id, $cart[0]['id']);
                 $cart[0]->grand_total += $item->price;
-                $cart[0]->save();
+                $cart[0]->save();                
             } else {
                 $cart = new Carts();
                 $cart->user_id = Auth::id();
                 $cart->save();
                 $this->createCartItem($item->id, $cart->id);
                 $cart->grand_total += $item->price;
-                $cart->save();
-            }
+                $cart->save();                
+            }            
             return $this->getCart($request);            
         }else {
             return response()->json(array("error" => "Unauthorized error"), 401);

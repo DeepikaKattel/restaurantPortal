@@ -50,7 +50,7 @@
                            <td>{{$i->name}}</td>
                            <td>{{$i->description}}</td>
                            <td>{{$i->price}}</td>
-                           <td><img src="{{asset("$i->image")}}" style="height:30px;width: 50px;"></td>
+                           <td><img src="/storage/Images/Items/{{$i->image}}" alt="" class="img-fluid" style="max-width: 6rem;"/></td>
                            <td>{{$i->isSpecial}}</td>
                            <td>{{$i->category_id}}</td>
                            <td id="none">

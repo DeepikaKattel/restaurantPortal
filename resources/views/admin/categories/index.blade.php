@@ -44,7 +44,7 @@
                        <tr>
                            <td>{{$loop->iteration}}</td>
                            <td>{{$c->name}}</td>
-                           <td><img src="{{asset("$c->image")}}" style="height:30px;width: 50px;"></td>
+                           <td><img src="/storage/Images/Categories/{{$c->image}}" alt="" class="img-fluid" style="max-width: 6rem;"/></td>
                            <td id="none">
                                <a href="{{route('categories.edit',$c->id)}}"><i class="fa fa-lg fa-edit"></i></a>
                                @method('DELETE')

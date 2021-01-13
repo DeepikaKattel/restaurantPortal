@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -54,12 +55,17 @@ class ItemController extends Controller
         $item->isSpecial = request('isSpecial');
         $item->category_id = request('category_id');
         $item->user_id = Auth::user()->id;
-        if ($request->hasFile('image')) {
-            $image = $request->image;
-            $fileName = rand() . "." . $image->getClientOriginalExtension();
-            $destination_path = public_path("FoodCategoryImage/");
-            $image->move($destination_path, $fileName);
-            $item->image = 'FoodCategoryImage/' . $fileName;
+        if($request->hasFile('image'))
+        {
+            $FilenameWithExtension1 = $request->file('image')->getClientOriginalName();
+            $Filename1 = pathinfo($FilenameWithExtension1, PATHINFO_FILENAME);
+            $Extension1 = $request->file('image')->getClientOriginalExtension();
+            $FileToStore1 = $Filename1.'_'.time().'.'.$Extension1;
+            $path1 = $request->file('image')->storeAs('/public/Images/Items',$FileToStore1);
+        }
+        if($request->hasFile('image'))
+        {
+            $item->image = $FileToStore1;
         }
         $item->save();
         $item = $item->save();
@@ -108,16 +114,19 @@ class ItemController extends Controller
         $item->price = request('price');
         $item->isSpecial = request('isSpecial');
         $item->category_id = request('category_id');
-        if ($request->hasFile("image")) {
-            if ($item->image) {
-                File::delete(public_path($item->image));
-            }
-            $image = $request->image;
-            $fileName = time() . "." . $image->getClientOriginalExtension();
-            $destination_path = public_path("itemImage/");
-            $image->move($destination_path, $fileName);
+        if($request->hasFile('image'))
+        {
+            $FilenameWithExtension1 = $request->file('image')->getClientOriginalName();
+            $Filename1 = pathinfo($FilenameWithExtension1, PATHINFO_FILENAME);
+            $Extension1 = $request->file('image')->getClientOriginalExtension();
+            $FileToStore1 = $Filename1.'_'.time().'.'.$Extension1;
+            $path1 = $request->file('image')->storeAs('/public/Images/Banner',$FileToStore1);
 
-            $item->image = 'itemImage/' . $fileName;
+            Storage::delete('public/Images/Items'.$item->image);
+        }
+        if($request->hasFile('image'))
+        {
+            $item->image = $FileToStore1;
         }
         $item->save();
         $item = $item->save();

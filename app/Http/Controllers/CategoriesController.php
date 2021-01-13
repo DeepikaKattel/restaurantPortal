@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriesController extends Controller
 {
@@ -33,7 +34,7 @@ class CategoriesController extends Controller
         $user = User::where('id',Auth::user()->id)
             ->where('user_type','normal')
             ->value('id');
-        $count = Item::where('user_id', $user)
+        $count = Categories::where('user_id', $user)
             ->count();
         return view('admin.categories.create',compact('count'));
     }
@@ -48,12 +49,17 @@ class CategoriesController extends Controller
     {
         $categories = new Categories();
         $categories->name = request('name');
-        if ($request->hasFile('image')) {
-            $image = $request->image;
-            $fileName = rand() . "." . $image->getClientOriginalExtension();
-            $destination_path = public_path("categoryImage/");
-            $image->move($destination_path, $fileName);
-            $categories->image = $fileName;
+        if($request->hasFile('image'))
+        {
+            $FilenameWithExtension1 = $request->file('image')->getClientOriginalName();
+            $Filename1 = pathinfo($FilenameWithExtension1, PATHINFO_FILENAME);
+            $Extension1 = $request->file('image')->getClientOriginalExtension();
+            $FileToStore1 = $Filename1.'_'.time().'.'.$Extension1;
+            $path1 = $request->file('image')->storeAs('/public/Images/Categories',$FileToStore1);
+        }
+        if($request->hasFile('image'))
+        {
+            $categories->image = $FileToStore1;
         }
         $categories->user_id = Auth::user()->id;
         $categories->save();
@@ -99,16 +105,19 @@ class CategoriesController extends Controller
     {
         $categories = Categories::find($id);
         $categories->name = request('name');
-        if ($request->hasFile("image")) {
-            if ($categories->image) {
-                File::delete(public_path($categories->image));
-            }
-            $image = $request->image;
-            $fileName = time() . "." . $image->getClientOriginalExtension();
-            $destination_path = public_path("categoryImage/");
-            $image->move($destination_path, $fileName);
+        if($request->hasFile('image'))
+        {
+            $FilenameWithExtension1 = $request->file('image')->getClientOriginalName();
+            $Filename1 = pathinfo($FilenameWithExtension1, PATHINFO_FILENAME);
+            $Extension1 = $request->file('image')->getClientOriginalExtension();
+            $FileToStore1 = $Filename1.'_'.time().'.'.$Extension1;
+            $path1 = $request->file('image')->storeAs('/public/Images/Categories',$FileToStore1);
 
-            $categories->image = 'categoryImage/' . $fileName;
+            Storage::delete('public/Images/Categories'.$categories->image);
+        }
+        if($request->hasFile('image'))
+        {
+            $categories->image = $FileToStore1;
         }
         $categories->save();
         $category = $categories->save();
